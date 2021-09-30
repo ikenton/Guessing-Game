@@ -29,6 +29,27 @@ ends
 #include <stdlib.h>
 #include <time.h>
 void main(int argc, char *argv[]){
+    int max = 9;
+    int randNum;
+    
+    char ans[1];
+    do{
+        printf("MAIN MENU\n************************\nChose One of the following:\n1: Start the game\n2. Set max number\n3. Quit game\n");
+        
+        scanf("%s", ans);
+        while(ans == '1'){
+            srand(time(0));
 
+            randNum = and()%max +1;
+        }
+
+        while(ans== '2'){
+
+        }
+        while(ans == '3' || ans == 'q'){
+
+        }
+
+    }while(ans == '1' || ans == '2');
     
 }
