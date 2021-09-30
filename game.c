@@ -31,44 +31,50 @@ ends
 void main(int argc, char *argv[]){
     int max = 9;
     int randNum;
-    
-    char ans[1];
+    int rand_max = 9;
+    char ansStr[1];
+    int ans;
     int guess;
     do{
         printf("MAIN MENU\n************************\nChose One of the following:\n1: Start the game\n2. Set max number\n3. Quit game\n");
         
-        scanf("%s", ans);
-        if(ans == '1'){
-            srand(time(0));
-            randNum = (rand() % max) + 1;
-            printf("Enter a number between 1 and 10\n");
-            scanf("%f", guess);
-            printf("You guessed: %f. The number was %f", guess, randNum);
-            while(guess != randNum){
-                if(guess > randNum){
-                    
-                    printf("Oops too high! Try again: \n");
-                    printf("Enter a number between 1 and 10\n");
-                    scanf("%f", guess);
-                } else if(guess < randNum){
-                    printf("Oops too low! Try again: \n");
-                    printf("Enter a number between 1 and 10\n");
-                    scanf("%f", guess);
-                }
-            }
-             printf("Well done! You guessed correctly!\n");
-                printf("Play again?\n");
-                printf("1: Start the game\n2. Set max number\n3. Quit game\n");
-        }/*
-         else if(ans == '2'){
+        scanf("%d", &ans);
+        scanf("%c", ansStr);
+        //compare these??
+        if(ans == 1){
             
+            do{
+                srand(time(0));
+                randNum = rand() % max + 1;
+                printf("Enter a number between 1 and 10\n");
+                scanf("%d", &guess);
+            
+                if(guess+1 > randNum){
+                    
+                    printf("\noops too high! Try again: \n");
+                } else if(guess+1 < randNum){
+                   
+                    printf("Oops too low! Try again: \n");
+                }
+            }while(guess+1 != randNum);
+            printf("You guessed %i\n", guess);
+            printf("Well done! You guessed correctly!\n");
+        }
+         else if(ans == 2){
+            printf("Choose a new max between 1-10\n");
+            scanf("%d", &max);
+            while(max-1 < 0 && max-1 > 9){
+                printf("The number you have chosen is %d. This number is out of bounds \n", max);
+                printf("Please choose a new max between 1-10\n");
+            }
+            printf("The new max is %i.", max);
         }
            
-        else if(ans == '3' || ans == 'q'){
+        else if(ans == 3 || ansStr[1] == 'q'){
             //TODO game over script
-            printf("");
+           // printf("");
         }
-    */
-    }while(ans == '1' || ans == '2');
     
+    }while(ans == 1 || ans == 2);
+    //print another game over statement here
 }
