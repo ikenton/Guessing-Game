@@ -33,23 +33,42 @@ void main(int argc, char *argv[]){
     int randNum;
     
     char ans[1];
+    int guess;
     do{
         printf("MAIN MENU\n************************\nChose One of the following:\n1: Start the game\n2. Set max number\n3. Quit game\n");
         
         scanf("%s", ans);
-        while(ans == '1'){
+        if(ans == '1'){
             srand(time(0));
-
-            randNum = and()%max +1;
+            randNum = (rand() % max) + 1;
+            printf("Enter a number between 1 and 10\n");
+            scanf("%f", guess);
+            printf("You guessed: %f. The number was %f", guess, randNum);
+            while(guess != randNum){
+                if(guess > randNum){
+                    
+                    printf("Oops too high! Try again: \n");
+                    printf("Enter a number between 1 and 10\n");
+                    scanf("%f", guess);
+                } else if(guess < randNum){
+                    printf("Oops too low! Try again: \n");
+                    printf("Enter a number between 1 and 10\n");
+                    scanf("%f", guess);
+                }
+            }
+             printf("Well done! You guessed correctly!\n");
+                printf("Play again?\n");
+                printf("1: Start the game\n2. Set max number\n3. Quit game\n");
+        }/*
+         else if(ans == '2'){
+            
         }
-
-        while(ans== '2'){
-
+           
+        else if(ans == '3' || ans == 'q'){
+            //TODO game over script
+            printf("");
         }
-        while(ans == '3' || ans == 'q'){
-
-        }
-
+    */
     }while(ans == '1' || ans == '2');
     
 }
