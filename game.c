@@ -30,7 +30,9 @@ void main(int argc, char *argv[]){
     int randNum;
     int ans;
     int guess;
-    //char c;
+    
+   
+
     do{
         printf("MAIN MENU\n************************\nChose One of the following:\n1: Start the game\n2. Set max number\n3. Quit game\n");
         
@@ -78,7 +80,7 @@ void main(int argc, char *argv[]){
                     printf("The number you have chosen is %d. This number is out of bounds \n", max);
                     printf("Please choose a new max between 1-10\n");
                 }
-                printf("The new max is %i.", max);
+                printf("The new max is %i.\n", max);
         }
         else if(ans == 3 || c == 'q'){
             //TODO game over script
@@ -87,11 +89,19 @@ void main(int argc, char *argv[]){
         }
     
     }while(ans == 1 || ans == 2);
-    //print another game over statement here
+    
 }
 
 int saveNum(int numToSave){
-    FILE *fp;
-
     
+     FILE *fp;
+    fp = fopen("user_max_number.txt", "w+");
+    fscanf(fp, "%d", &numToSave);
+    if(fp != NULL){
+        
+    }
+    fprintf(fp, "%d", numToSave);
+    fclose(fp);
+
+    return 0;
 }
