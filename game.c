@@ -33,7 +33,9 @@ void main(int argc, char *argv[]){
     int randNum;
     int ans;
     int guess;
-    //char c;
+    int user_max;
+    char str[2];
+    FILE *fp;
     do{
         printf("MAIN MENU\n************************\nChose One of the following:\n1: Start the game\n2. Set max number\n3. Quit game\n");
         
@@ -46,7 +48,8 @@ void main(int argc, char *argv[]){
             srand(time(0));
             randNum = rand() % max + 1;
             do{
-                printf("Enter a number between 1 and %i\n", max+1);
+                
+                
                 scanf("%d", &guess);
                 char c = getchar();
                 if(c == 'q'){
@@ -69,18 +72,13 @@ void main(int argc, char *argv[]){
         
          else if(ans == 2){
             printf("Choose a new max between 1-10\n");
-            scanf("%d", &max);
+            scanf("%d", &user_max);
             char c = getchar();
-            
-                //stays between 0-9 n
-                while(max-1 < 0 && max-1 > 9){
-                    if(c == 'q'){
-                        break;
-                    }
-                    printf("The number you have chosen is %d. This number is out of bounds \n", max);
-                    printf("Please choose a new max between 1-10\n");
-                }
-                printf("The new max is %i.", max);
+            if(c == 'q'){
+                break;
+            }
+            changeMax(user_max);
+
         }
         else if(ans == 3 || c == 'q'){
             //TODO game over script
@@ -90,4 +88,19 @@ void main(int argc, char *argv[]){
     
     }while(ans == 1 || ans == 2);
     //print another game over statement here
+}
+
+int changeMax(int input){
+    
+            char str[2];
+                //stays between 0-9 n
+                while(input-1 < 0 && input-1 > 9){
+                    if(c == 'q'){
+                        break;
+                    }
+                    printf("The number you have chosen is %d. This number is out of bounds \n", max);
+                    printf("Please choose a new max between 1-10\n");
+                }
+                printf("The new max is %i.", max);
+                
 }
